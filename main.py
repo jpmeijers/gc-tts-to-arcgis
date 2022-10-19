@@ -153,6 +153,8 @@ def uplink_message(request):
     if 'name' not in flat_payload:
         flat_payload['name'] = name
 
+    flat_payload['hardware_serial'] = device_eui
+
     # Get token
     params = {
         'client_id': client_id,

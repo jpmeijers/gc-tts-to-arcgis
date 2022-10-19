@@ -1,7 +1,7 @@
 def arcgis_new_feature_no_location(payload, message_time):
     new_feature = {
         "attributes": {
-            "timestamp": message_time,
+            "location_timestamp": message_time,
         }
     }
 
@@ -14,7 +14,7 @@ def arcgis_new_feature_no_location(payload, message_time):
 def arcgis_new_feature_with_location(payload, message_time):
     new_feature = {
         "attributes": {
-            "timestamp": message_time,
+            "location_timestamp": message_time,
         }
     }
 
@@ -32,7 +32,7 @@ def arcgis_new_feature_with_location(payload, message_time):
 
 
 def arcgis_update_feature_no_location(feature, payload, message_time):
-    feature.attributes["timestamp"] = message_time
+    feature.attributes["location_timestamp"] = message_time
 
     # Add all fields
     feature.attributes.update(payload)
@@ -41,7 +41,7 @@ def arcgis_update_feature_no_location(feature, payload, message_time):
 
 
 def arcgis_update_feature_with_location(feature, payload, message_time):
-    feature.attributes["timestamp"] = message_time
+    feature.attributes["location_timestamp"] = message_time
 
     if "latitude" in payload and "longitude" in payload:
         if not (payload['latitude'] == 0 and payload['longitude'] == 0):
